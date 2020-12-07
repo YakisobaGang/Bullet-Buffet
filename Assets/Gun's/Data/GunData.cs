@@ -8,6 +8,7 @@ namespace YakisobaGang.Scripts.Data
   public sealed class GunData : ScriptableObject
   {
     [SerializeField] private string gunName;
+    
 
     [SerializeField] [PreviewField(ObjectFieldAlignment.Left, Height = 130)]
     private Sprite gunSprite;

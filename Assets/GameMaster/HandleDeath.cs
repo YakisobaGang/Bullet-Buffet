@@ -21,7 +21,7 @@ namespace YakisobaGang.GameMaster
 
     private void LoadDeathScreen(object sender, EventArgs e)
     {
-      SceneManager.LoadScene(2);
+      SceneManager.LoadScene(3);
       Cursor.visible = true;
     }
   }

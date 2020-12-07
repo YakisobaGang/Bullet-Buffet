@@ -63,12 +63,12 @@ namespace YakisobaGang.Player.Scripts
             var moveX = Input.GetAxisRaw("Horizontal");
             var mousePos = Input.mousePosition;
 
-            if (KeyDown(KeyCode.B))
-            {
-                _store.SetActive(true);
-                Time.timeScale = 0;
-
-            }
+            // if (KeyDown(KeyCode.B))
+            // {
+            //     _store.SetActive(true);
+            //     Time.timeScale = 0;
+            //
+            // }
             if (Health <= 0) OnPlayerDeth?.Invoke(this, EventArgs.Empty);
 
             if (KeyDown(KeyCode.R)) _gun.ReloadGun();

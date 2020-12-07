@@ -31,7 +31,6 @@ namespace Scripts
     
     private void Awake()
     {
-      
       _canShot = GetComponentInParent<ICanShot>();
       _renderer = GetComponent<SpriteRenderer>();
       _gunTransform = GetComponent<Transform>();
