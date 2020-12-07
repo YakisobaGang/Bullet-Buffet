@@ -25,7 +25,7 @@ namespace YakisobaGang.Player.Scripts
     private GenericGun _gun;
     private Camera _mainCamera;
     private Rigidbody2D _physics;
-    private Vector3 _slideDir;
+    private Vector3 _slideDi r;
     private float _slideSpeed;
     private State _state;
     private Transform _transform;

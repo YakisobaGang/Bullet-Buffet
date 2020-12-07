@@ -23,7 +23,7 @@ namespace Scripts
     private ICanShot _canShot;
     private Transform _gunTransform;
     private SpriteRenderer _renderer;
-    private readonly float defaultFireRate = 1f;
+    private float defaultFireRate = 1f;
     private (bool hasLigt, Light2D light) _muzzleFlash;
 
     public int CurrentAmmunition { get; private set; }
