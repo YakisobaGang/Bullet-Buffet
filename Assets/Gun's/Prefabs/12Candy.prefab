@@ -136,9 +136,10 @@ MonoBehaviour:
   - {fileID: 5810138055973762991}
   cameraShakeIntensity: 0.6
   cameraShakeDuration: 0.4
-  disableReload: 0
+  disableReload: 1
   disableCameraShake: 0
   shotSFX: {fileID: 3766038976890111596}
+  currentFireRate: 1
 --- !u!114 &8917629110428575400
 MonoBehaviour:
   m_ObjectHideFlags: 0
