@@ -1,0 +1,665 @@
+fileFormatVersion: 2
+guid: 559c0eb4bb592ad49b4ad740522bdfab
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6584263727629244730
+    second: titlecard_0
+  - first:
+      213: 6605555873338533150
+    second: titlecard_1
+  - first:
+      213: -1649567150895795704
+    second: titlecard_2
+  - first:
+      213: 3776792168426462120
+    second: titlecard_3
+  - first:
+      213: -1075264667897784948
+    second: titlecard_4
+  - first:
+      213: -3833571128480023009
+    second: titlecard_5
+  - first:
+      213: -5966618925077673767
+    second: titlecard_6
+  - first:
+      213: 2391963714091950361
+    second: titlecard_7
+  - first:
+      213: -2446315891194432012
+    second: titlecard_8
+  - first:
+      213: 2831906219922649356
+    second: titlecard_9
+  - first:
+      213: -2961098344178032276
+    second: titlecard_10
+  - first:
+      213: 4445879139757937200
+    second: titlecard_11
+  - first:
+      213: -2316670840419294568
+    second: titlecard_12
+  - first:
+      213: -3672998101096688339
+    second: titlecard_13
+  - first:
+      213: -3082844048395674827
+    second: titlecard_14
+  - first:
+      213: 7007042231709190549
+    second: titlecard_15
+  - first:
+      213: 402501425686780828
+    second: titlecard_16
+  - first:
+      213: 351517928040123840
+    second: titlecard_17
+  - first:
+      213: 2365301643664373401
+    second: titlecard_0
+  - first:
+      213: 46064887902709068
+    second: titlecard_1
+  - first:
+      213: -1755136014542047972
+    second: titlecard_2
+  - first:
+      213: 1188525397901278865
+    second: titlecard_3
+  - first:
+      213: -6293408758479429270
+    second: titlecard_4
+  - first:
+      213: -5135377938546158242
+    second: titlecard_5
+  - first:
+      213: 5173213645439574032
+    second: titlecard_6
+  - first:
+      213: -7463356698378002809
+    second: titlecard_7
+  - first:
+      213: 687229758564816496
+    second: titlecard_8
+  - first:
+      213: 728185263395866959
+    second: titlecard_9
+  - first:
+      213: 1714614912634601365
+    second: titlecard_10
+  - first:
+      213: -2448646154348016242
+    second: titlecard_11
+  - first:
+      213: -1027709445438389288
+    second: titlecard_12
+  - first:
+      213: 850960557020408486
+    second: titlecard_13
+  - first:
+      213: -2947361207418217658
+    second: titlecard_14
+  - first:
+      213: -3158267301181355641
+    second: titlecard_15
+  - first:
+      213: -619925722548619754
+    second: titlecard_16
+  - first:
+      213: 2982269462321814971
+    second: titlecard_18
+  - first:
+      213: -406716470657632320
+    second: titlecard_19
+  - first:
+      213: 6351420477049388431
+    second: titlecard_20
+  - first:
+      213: 1508484971171782958
+    second: titlecard_21
+  - first:
+      213: -4201163346313816817
+    second: titlecard_22
+  - first:
+      213: -4253723016187435090
+    second: titlecard_23
+  - first:
+      213: -4328722110706810043
+    second: titlecard_24
+  - first:
+      213: -8270984965225405619
+    second: titlecard_25
+  - first:
+      213: -7997775420352079684
+    second: titlecard_26
+  - first:
+      213: -441510888849375312
+    second: titlecard_27
+  - first:
+      213: -6922325650495577031
+    second: titlecard_28
+  - first:
+      213: -8624609423142366918
+    second: titlecard_29
+  - first:
+      213: -8279746987857363069
+    second: titlecard_30
+  - first:
+      213: -5352146826335039167
+    second: titlecard_31
+  - first:
+      213: -9012592776600534144
+    second: titlecard_32
+  - first:
+      213: 7787090230882776654
+    second: titlecard_33
+  - first:
+      213: 4576220268567048725
+    second: titlecard_34
+  - first:
+      213: 7280545321546966813
+    second: titlecard_35
+  - first:
+      213: -4931376621862697586
+    second: titlecard_36
+  - first:
+      213: 5232817295232315544
+    second: titlecard_37
+  - first:
+      213: 8347242713151719672
+    second: titlecard_38
+  - first:
+      213: -8129377806223536089
+    second: titlecard_39
+  - first:
+      213: 7586169822775855895
+    second: titlecard_40
+  - first:
+      213: 6795711094899446090
+    second: titlecard_41
+  - first:
+      213: 6013028674891307701
+    second: titlecard_42
+  - first:
+      213: 8562599721834120059
+    second: titlecard_43
+  - first:
+      213: 9199599512019569430
+    second: titlecard_44
+  - first:
+      213: 7385363500207291044
+    second: titlecard_45
+  - first:
+      213: 4974655732873447400
+    second: titlecard_46
+  - first:
+      213: 7991609694894355278
+    second: titlecard_47
+  - first:
+      213: -1527497404181032220
+    second: titlecard_48
+  - first:
+      213: -1691958117921987673
+    second: titlecard_49
+  - first:
+      213: -4263122366199687211
+    second: titlecard_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 98
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: titlecard_0
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 638
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9963341205d33d020800000000000000
+      internalID: 2365301643664373401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_2
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 508
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c15f9b8081184a7e0800000000000000
+      internalID: -1755136014542047972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_6
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 384
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01021a3d662fac740800000000000000
+      internalID: 5173213645439574032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_11
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 125
+        width: 100
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8dc57dcb49a40ed0800000000000000
+      internalID: -2448646154348016242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_13
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 124
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aae1173e183fcb00800000000000000
+      internalID: 850960557020408486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_1
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 638
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c452f0085c7a3a000800000000000000
+      internalID: 46064887902709068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_3
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 508
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e7f646d8d7e7010800000000000000
+      internalID: 1188525397901278865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_4
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 237
+        width: 276
+        height: 295
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61608cf31259a8a0800000000000000
+      internalID: -6293408758479429270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_5
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 384
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1e31c9ae5b6ccac0800000000000000
+      internalID: -3833571128480023009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_7
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 256
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91123162356f13120800000000000000
+      internalID: 2391963714091950361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_8
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 257
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f576f878a0fc0ed0800000000000000
+      internalID: -2446315891194432012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_9
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 124
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0175b3f3b3fc4720800000000000000
+      internalID: 2831906219922649356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_10
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 124
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c61654a9eb018e6d0800000000000000
+      internalID: -2961098344178032276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_12
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 124
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8926d47152889dfd0800000000000000
+      internalID: -2316670840419294568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_15
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 123
+        width: 194
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 599cf2be8c30e3160800000000000000
+      internalID: 7007042231709190549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_16
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 123
+        width: 193
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9b16a30ae8f59500800000000000000
+      internalID: 402501425686780828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: titlecard_14
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 143
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53bd27deba98735d0800000000000000
+      internalID: -3082844048395674827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

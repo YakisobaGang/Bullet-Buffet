@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream:Assets/Canvas/Scripts.meta
+guid: c725a6d2ae2c6ac4bbd89f3210e7de64
+folderAsset: yes
+DefaultImporter:
+=======
+guid: ff919b98bb214b64cae0ef6f51b0f027
+NativeFormatImporter:
+>>>>>>> Stashed changes:Assets/Canvas/Big Lake SDF.asset.meta
+  externalObjects: {}
+  mainObjectFileID: 0
+=======
+<<<<<<< HEAD:Assets/_TerrainAutoUpgrade.meta
+guid: 603c21754fa37534a919e9b7b84e4c4a
+=======
+guid: cec3e8dc4334742499c6864a356e0a47
+>>>>>>> 0a8cfe2eaa10532083a42d20783d99f24c29e2b0:Assets/Canvas/Scripts.meta
+folderAsset: yes
+DefaultImporter:
+  externalObjects: {}
+>>>>>>> Stashed changes
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
