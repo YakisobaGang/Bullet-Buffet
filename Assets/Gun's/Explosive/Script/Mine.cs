@@ -25,7 +25,7 @@ namespace Explosive
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-      if (other.CompareTag("Player")) _anim.Play("detonationAnim");
+      if (other.CompareTag("Enemy")) _anim.Play("detonationAnim");
     }
 
     public void Explosion()
