@@ -103,6 +103,7 @@ Transform:
   m_LocalScale: {x: 0.27, y: 0.27, z: 0.27}
   m_Children:
   - {fileID: 5411692504977067938}
+  - {fileID: 6335067788911501463}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -173,6 +174,9 @@ MonoBehaviour:
   - {fileID: 5411692504977067938}
   cameraShakeIntensity: 0.6
   cameraShakeDuration: 0.4
+  disableReload: 0
+  disableCameraShake: 0
+  shotSFX: {fileID: 2767835090304649199}
 --- !u!114 &1175014701175650889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,3 +189,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b77a1424c7544c5e984d8cf7cb0df10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &8656188085740402836
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 652002932397982867}
+    m_Modifications:
+    - target: {fileID: 2244633856102962750, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_Name
+      value: Milk-A4 SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b177d5aee2c3af04196548c9c2059d61, type: 3}
+--- !u!4 &6335067788911501463 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3443665631278307331, guid: b177d5aee2c3af04196548c9c2059d61,
+    type: 3}
+  m_PrefabInstance: {fileID: 8656188085740402836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2767835090304649199 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6794144487296614267, guid: b177d5aee2c3af04196548c9c2059d61,
+    type: 3}
+  m_PrefabInstance: {fileID: 8656188085740402836}
+  m_PrefabAsset: {fileID: 0}
