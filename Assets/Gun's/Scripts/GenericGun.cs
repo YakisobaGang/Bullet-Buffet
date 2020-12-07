@@ -27,7 +27,8 @@ namespace Scripts
     private (bool hasLigt, Light2D light) _muzzleFlash;
 
     public int CurrentAmmunition { get; private set; }
-
+    public float currentFireRate = 1f;
+    
     private void Awake()
     {
       
@@ -37,6 +38,7 @@ namespace Scripts
      
       _renderer.sprite = gunData.GunSprite;
       gunData.FireRate = defaultFireRate;
+      gunData.FireRate = currentFireRate;
       CurrentAmmunition = gunData.Ammunition;
     }
 
@@ -47,7 +49,7 @@ namespace Scripts
 
     public void EditFireRate(float fireRate)
     {
-      gunData.FireRate -= fireRate;
+      currentFireRate -= fireRate;
     }
 
     public void ReloadGun()

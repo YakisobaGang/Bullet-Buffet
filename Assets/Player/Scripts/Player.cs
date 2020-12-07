@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameMaster;
 using Scripts;
 using UnityEngine;
 
@@ -78,7 +79,7 @@ namespace YakisobaGang.Player.Scripts
 
             timeLastShot += Time.deltaTime;
             if (FireKeyPress() && Time.timeScale != 0)
-                if (timeLastShot >= _gun.gunData.FireRate)
+                if (timeLastShot >= _gun.currentFireRate)
                 {
                     _gun.FireBullet();
                     timeLastShot = 0;

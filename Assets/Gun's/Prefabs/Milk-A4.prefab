@@ -177,6 +177,7 @@ MonoBehaviour:
   disableReload: 0
   disableCameraShake: 0
   shotSFX: {fileID: 2767835090304649199}
+  currentFireRate: 1
 --- !u!114 &1175014701175650889
 MonoBehaviour:
   m_ObjectHideFlags: 0
