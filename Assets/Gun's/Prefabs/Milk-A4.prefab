@@ -169,15 +169,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6beb2606ef34ca744b29f0b09a9a85f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: a4eb01dc03fc89a4398a5a9fb340b79f, type: 2}
+  gunInfo:
+    gunName: Milk-4M
+    gunSprite: {fileID: 21300000, guid: 7996e93b54086c747ac5fd9ee8890c57, type: 3}
+    currentAmmunition: 25
+    maxMagazineSize: 25
+    bulletSpeed: 35
+    fireRate: 0.8
   firePoint:
   - {fileID: 5411692504977067938}
   cameraShakeIntensity: 0.6
   cameraShakeDuration: 0.4
-  disableReload: 1
+  disableReload: 0
   disableCameraShake: 0
   shotSFX: {fileID: 2767835090304649199}
-  currentFireRate: 1
 --- !u!114 &1175014701175650889
 MonoBehaviour:
   m_ObjectHideFlags: 0

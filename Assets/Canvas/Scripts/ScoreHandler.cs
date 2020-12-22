@@ -1,21 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class ScoreHandler : MonoBehaviour
+namespace Canvas.Scripts
 {
-    private TextMeshProUGUI texto;
-
-    void Awake()
+    public class ScoreHandler : MonoBehaviour
     {
-        texto = GetComponent<TextMeshProUGUI>();
-        ScoreAndCashSystem.Score = 0;
-    }
+        private TextMeshProUGUI texto;
 
-    void FixedUpdate()
-    {
-        texto.SetText("Score: " + ScoreAndCashSystem.Score);
+        void Awake()
+        {
+            texto = GetComponent<TextMeshProUGUI>();
+            ScoreAndCashSystem.Score = 0;
+        }
+
+        void FixedUpdate()
+        {
+            texto.SetText("Score: " + ScoreAndCashSystem.Score);
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace CodeMonkey.Utils {
         private static Transform cachedCanvasTransform;
         public static Transform GetCanvasTransform() {
             if (cachedCanvasTransform == null) {
-                Canvas canvas = MonoBehaviour.FindObjectOfType<Canvas>();
+                UnityEngine.Canvas canvas = MonoBehaviour.FindObjectOfType<UnityEngine.Canvas>();
                 if (canvas != null) {
                     cachedCanvasTransform = canvas.transform;
                 }

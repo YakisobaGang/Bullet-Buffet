@@ -1,6 +1,5 @@
-﻿using Scripts;
-using UnityEngine;
-using YakisobaGang.Player.Scripts;
+﻿using UnityEngine;
+using YakisobaGang.Scripts;
 
 public class ShopSystem : MonoBehaviour
 {
@@ -9,13 +8,13 @@ public class ShopSystem : MonoBehaviour
     public int position;
     public int _actualValue;
     private int _actualCash;
-    private Player _player;
+    private Player.Scripts.Player _player;
     public bool useCash;
 
     private void Awake()
     {
         _value = _actualValue;
-        _player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        _player = GameObject.FindWithTag("Player").GetComponent<Player.Scripts.Player>();
     }
 
     private void LateUpdate()

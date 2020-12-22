@@ -9585,7 +9585,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -9729,8 +9729,9 @@ MonoBehaviour:
   damageArea: 4
   enemysLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   explosionFX: {fileID: 5613228383553717500}
+  activateWithPlayer: 0
 --- !u!58 &7031981669735303030
 CircleCollider2D:
   m_ObjectHideFlags: 0

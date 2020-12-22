@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using Player.Scripts;
+using UnityEngine;
 
-namespace Scripts
+namespace YakisobaGang.Scripts
 {
   public class HanfleMilkA4Flip : MonoBehaviour
   {
     void Start()
     {
-      var gunData = GetComponent<GenericGun>().gunData;
+      var gunData = GetComponent<GenericGun>().gunInfo;
       var firePoint = GetComponent<GenericGun>().firePoint;
         
       GetComponentInParent<Aim>().FlipPlayer += delegate(bool b)

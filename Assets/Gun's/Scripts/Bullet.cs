@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using GameMaster;
+﻿using GameMaster;
 using UnityEngine;
 
-namespace Scripts
+namespace YakisobaGang.Scripts
 {
 
     public class Bullet : MonoBehaviour

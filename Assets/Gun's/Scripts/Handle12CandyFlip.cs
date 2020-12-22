@@ -1,38 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Scripts;
+﻿using Player.Scripts;
 using UnityEngine;
 
-public class Handle12CandyFlip : MonoBehaviour
+namespace YakisobaGang.Scripts
 {
-    void Start()
+    public class Handle12CandyFlip : MonoBehaviour
     {
-        var gunData = GetComponent<GenericGun>().gunData;
-        var firePoint = GetComponent<GenericGun>().firePoint;
-        
-        GetComponentInParent<Aim>().FlipPlayer += delegate(bool b)
+        void Start()
         {
-            try
+            var gunData = GetComponent<GenericGun>().gunInfo;
+            var firePoint = GetComponent<GenericGun>().firePoint;
+        
+            GetComponentInParent<Aim>().FlipPlayer += delegate(bool b)
             {
-                if (gunData.GunName != "12Candy") return;
+                try
+                {
+                    if (gunData.GunName != "12Candy") return;
 
-                if (!b)
-                {
-                    firePoint[0].localRotation = Quaternion.Euler(0f, 0f, -68.0f);
-                    firePoint[1].localRotation = Quaternion.Euler(0f, 0f, -90.0f);
-                    firePoint[2].localRotation = Quaternion.Euler(0f, 0f, -104.0f);
+                    if (!b)
+                    {
+                        firePoint[0].localRotation = Quaternion.Euler(0f, 0f, -68.0f);
+                        firePoint[1].localRotation = Quaternion.Euler(0f, 0f, -90.0f);
+                        firePoint[2].localRotation = Quaternion.Euler(0f, 0f, -104.0f);
+                    }
+                    else
+                    {
+                        firePoint[0].localRotation = Quaternion.Euler(0f, 0f, 68.0f);
+                        firePoint[1].localRotation = Quaternion.Euler(0f, 0f, 90.0f);
+                        firePoint[2].localRotation = Quaternion.Euler(0f, 0f, 104.0f);
+                    }
                 }
-                else
+                catch (MissingReferenceException)
                 {
-                    firePoint[0].localRotation = Quaternion.Euler(0f, 0f, 68.0f);
-                    firePoint[1].localRotation = Quaternion.Euler(0f, 0f, 90.0f);
-                    firePoint[2].localRotation = Quaternion.Euler(0f, 0f, 104.0f);
+                    return;
                 }
-            }
-            catch (MissingReferenceException)
-            {
-                return;
-            }
-        };
+            };
+        }
     }
 }

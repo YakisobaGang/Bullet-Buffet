@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using Sirenix.OdinInspector;
-using YakisobaGang.GameMaster;
+﻿using Sirenix.OdinInspector;
 using TMPro;
+using UnityEngine;
+using YakisobaGang.GameMaster;
 
-namespace YakisobaGang.Canvas
+namespace Canvas.Scripts
 {
     public class HighScoreHandler : MonoBehaviour
     {

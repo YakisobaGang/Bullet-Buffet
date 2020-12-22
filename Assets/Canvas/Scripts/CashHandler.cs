@@ -1,21 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class CashHandler : MonoBehaviour
+namespace Canvas.Scripts
 {
-    private TextMeshProUGUI texto;
-
-    void Awake()
+    public class CashHandler : MonoBehaviour
     {
-        texto = GetComponent<TextMeshProUGUI>();
-        ScoreAndCashSystem.Cash = 0;
-    }
+        private TextMeshProUGUI texto;
 
-    void FixedUpdate()
-    {
-        texto.SetText("Cash: " + ScoreAndCashSystem.Cash);
+        void Awake()
+        {
+            texto = GetComponent<TextMeshProUGUI>();
+            ScoreAndCashSystem.Cash = 0;
+        }
+
+        void FixedUpdate()
+        {
+            texto.SetText("Cash: " + ScoreAndCashSystem.Cash);
+        }
     }
 }

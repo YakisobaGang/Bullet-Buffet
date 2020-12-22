@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Explosive
+namespace Explosive.Script
 {
   public class Mine : MonoBehaviour
   {
@@ -10,6 +8,7 @@ namespace Explosive
     [SerializeField] private float damageArea = 4f;
     [SerializeField] private LayerMask enemysLayer;
     [SerializeField] private GameObject explosionFX;
+    [SerializeField] private bool activateWithPlayer = false;
     private Animator _anim;
 
     private void Awake()
@@ -25,7 +24,7 @@ namespace Explosive
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-      if (other.CompareTag("Enemy")) _anim.Play("detonationAnim");
+      if (other.CompareTag(activateWithPlayer ? "Player" : "Enemy" )) _anim.Play("detonationAnim");
     }
 
     public void Explosion()
@@ -35,10 +34,10 @@ namespace Explosive
       
       if (enemys.Length <= 0) return;
       explosionFX.SetActive(true);
-      Destroy(gameObject,1.2f);
-      for (var i = 0; i < enemys.Length; i++) enemys[i].GetComponent<IDamageable>().TakeDamage(damage);
-
+      explosionFX.GetComponent<ParticleSystem>().Play();
       
+      for (var i = 0; i < enemys.Length; i++) enemys[i].GetComponent<IDamageable>().TakeDamage(damage);
+      Destroy(gameObject,1.2f);
     }
   }
 }

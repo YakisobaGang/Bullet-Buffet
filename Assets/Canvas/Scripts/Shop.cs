@@ -1,17 +1,19 @@
-﻿using UnityEngine.UI;
+﻿using TMPro;
 using UnityEngine;
-using TMPro;
 
-public class Shop : MonoBehaviour
+namespace Canvas.Scripts
 {
-    private TextMeshProUGUI texto;
-
-    void Awake()
+    public class Shop : MonoBehaviour
     {
-        texto = GetComponent<TextMeshProUGUI>();
+        private TextMeshProUGUI texto;
+
+        void Awake()
+        {
+            texto = GetComponent<TextMeshProUGUI>();
+        }
+
+        public void ShopInfo(string text, int _value) =>
+            texto.SetText($"{text}:  ${_value}. Aperte E para comprar");
+
     }
-
-    public void ShopInfo(string text, int _value) =>
-        texto.SetText($"{text}:  ${_value}. Aperte E para comprar");
-
 }

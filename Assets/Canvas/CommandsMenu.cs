@@ -1,18 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CommandsMenu : MonoBehaviour
+namespace Canvas
 {
-    public int index;
-    public void StartGame()
+    public class CommandsMenu : MonoBehaviour
     {
-        SceneManager.LoadScene(2);
-    }
+        public int index;
+        public void StartGame()
+        {
+            SceneManager.LoadScene(2);
+        }
 
-    public void QuitGame()
-    {
-        Application.Quit();
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     }
 }

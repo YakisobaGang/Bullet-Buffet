@@ -1,9 +1,9 @@
 ﻿using System;
 using Pathfinding;
-using Scripts;
 using Unity.Mathematics;
 using UnityEngine;
 using YakisobaGang;
+using YakisobaGang.Scripts;
 
 namespace Enemys.Attack_Behaviour
 {

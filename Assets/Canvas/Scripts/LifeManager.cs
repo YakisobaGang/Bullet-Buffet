@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Collections;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine;
 
-namespace YakisobaGang.Canvas
+namespace Canvas.Scripts
 {
 
     public class LifeManager : MonoBehaviour

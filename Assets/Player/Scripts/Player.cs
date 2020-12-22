@@ -1,29 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using Explosive.Script;
 using GameMaster;
-using Scripts;
 using UnityEngine;
+using YakisobaGang.Scripts;
 
-namespace YakisobaGang.Player.Scripts
+namespace Player.Scripts
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class Player : MonoBehaviour, IDamageable, ICanShot
     {
         private static readonly int IsWalking = Animator.StringToHash("IsWalking");
-
-
+        
         [SerializeField] private int health = 10;
         [SerializeField] private Animator anim;
         [SerializeField] private Transform player555;
         [SerializeField] private int bombsCount = 3;
         [SerializeField] public List<GameObject> inventory = new List<GameObject>(3);
+        private readonly Dictionary<string, GameObject> _itemsInstance = new Dictionary<string, GameObject>();
         public Transform hand;
         public float speed = 8;
         public float ControladorDodge = 300f;
         public GameObject _store;
         private readonly int _currentItemIndex = 0;
         private Aim _aim;
-        private GameObject _currentItemObj;
         private GenericGun _gun;
         private Camera _mainCamera;
         private Rigidbody2D _physics;
@@ -35,26 +35,48 @@ namespace YakisobaGang.Player.Scripts
         private bool flip;
         private float timeLastShot;
 
+        private (GameObject gunGameObject, GenericGun genericGun) _primaryGun;
+        private (GameObject gunGameObject, GenericGun genericGun) _secondaryGun;
+        private ObjectPooler _objectPooler;
+
         public int CurrentBombsCount { get; private set; }
 
         public int Health => health;
 
-        private void Awake()
-        {
-            _transform = GetComponent<Transform>();
-            _physics = GetComponent<Rigidbody2D>();
-            _mainCamera = Camera.main;
-            _currentItemObj = Instantiate(inventory[_currentItemIndex], hand);
-            CurrentBombsCount = bombsCount;
-            _gun = _currentItemObj.GetComponent<GenericGun>();
-            GetComponent<Aim>().FlipPlayer += b => flip = b;
-        }
+        private void Awake() => (_transform, _physics, _mainCamera) = 
+            (GetComponent<Transform>(), GetComponent<Rigidbody2D>(), Camera.main);
+            
 
         private void Start()
         {
             _state = State.Normal;
             _slideSpeed = ControladorDodge;
             _aim = GetComponent<Aim>();
+            
+            
+            CurrentBombsCount = bombsCount;
+            GetComponent<Aim>().FlipPlayer += b => flip = b;
+            
+            // spawning the primary and secondary guns
+            var index = 0;
+            inventory.ForEach((item)=>
+            {
+                if(item.TryGetComponent(out Mine _)) return;
+                
+                var temp = Instantiate(item, hand);
+                _itemsInstance.Add(index == 0 ? "primary": "secondary", temp);
+                temp.SetActive(index == 0 ? true : false);
+                index++;
+            });
+            
+            // get the gameObject and genericGun from _itemsInstance and caching
+            _itemsInstance.TryGetValue("primary", out GameObject gunGameObjectPrimary);
+            _primaryGun = (gunGameObjectPrimary, gunGameObjectPrimary.GetComponent<GenericGun>());
+            
+            _itemsInstance.TryGetValue("secondary", out var gunGameObjectSecondary);
+            _secondaryGun = (gunGameObjectSecondary, gunGameObjectSecondary.GetComponent<GenericGun>());
+
+            _gun = _primaryGun.genericGun;
         }
 
         private void Update()
@@ -73,13 +95,13 @@ namespace YakisobaGang.Player.Scripts
 
             if (KeyDown(KeyCode.R)) _gun.ReloadGun();
 
-            if (KeyDown(KeyCode.Alpha1)) ChangeWeapon(0);
-            if (KeyDown(KeyCode.Alpha2)) ChangeWeapon(1);
+            if (KeyDown(KeyCode.Alpha1)) ChangeWeapon("primary");
+            if (KeyDown(KeyCode.Alpha2)) ChangeWeapon("secondary");
             if (KeyDown(KeyCode.G)) PlantC4();
 
             timeLastShot += Time.deltaTime;
             if (FireKeyPress() && Time.timeScale != 0)
-                if (timeLastShot >= _gun.currentFireRate)
+                if (timeLastShot >= _gun.gunInfo.FireRate)
                 {
                     _gun.FireBullet();
                     timeLastShot = 0;
@@ -106,7 +128,7 @@ namespace YakisobaGang.Player.Scripts
         {
             if (CurrentBombsCount <= 0) return;
 
-            Instantiate(inventory[2], transform.position, Quaternion.identity);
+            Instantiate(inventory[2], _transform.position, Quaternion.identity);
             CurrentBombsCount--;
         }
 
@@ -146,11 +168,24 @@ namespace YakisobaGang.Player.Scripts
             return Input.GetKeyDown(keyCode);
         }
 
-        private void ChangeWeapon(int i)
+        private void ChangeWeapon(string gunSlotName)
         {
-            Destroy(_currentItemObj);
-            _currentItemObj = Instantiate(inventory[i], hand);
-            _gun = _currentItemObj.GetComponent<GenericGun>();
+            switch (gunSlotName)
+            {
+                case "primary":
+                    _secondaryGun.gunGameObject.SetActive(false);    // Disable secondary gun
+                    _primaryGun.gunGameObject.SetActive(true);      //  Enable primary gun
+
+                    _gun = _primaryGun.genericGun;
+                    break;
+                case "secondary":
+                    _primaryGun.gunGameObject.SetActive(false);      // Disable primary gun
+                    _secondaryGun.gunGameObject.SetActive(true);    //  Enable secondary gun
+                    
+                    _gun = _secondaryGun.genericGun;
+                    break;
+            }
+            
         }
 
         private void Movement(float moveX, float moveY)

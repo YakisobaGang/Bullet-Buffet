@@ -1,83 +1,155 @@
-﻿using System;
-using System.Collections;
-using Ludiq.OdinSerializer.Utilities;
+﻿using System.Collections;
+using GameMaster;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
-using YakisobaGang;
-using YakisobaGang.Scripts.Data;
 
-namespace Scripts
+namespace YakisobaGang.Scripts
 {
+  [System.Serializable]
+  public class GunInfo
+  {
+    ObjectPooler objectPooler = ObjectPooler.Instance;
+    
+    [SerializeField] private string gunName;
+
+    [SerializeField] [PreviewField(ObjectFieldAlignment.Left, Height = 130)]
+    private Sprite gunSprite;
+
+    [HorizontalGroup("Split", 0.5f, LabelWidth = 170)]
+    [SerializeField, BoxGroup("Split/Ammunition"),LabelWidth(130),PropertyRange(0, "maxMagazineSize")]
+    private int currentAmmunition;
+    [SerializeField, BoxGroup("Split/Ammunition"), LabelWidth(130)]
+    private int maxMagazineSize;
+    
+    [SerializeField, BoxGroup("Split/Shots"), LabelWidth(130)]
+    private float bulletSpeed = 20f;
+
+    [SerializeField, BoxGroup("Split/Shots"),LabelWidth(130), Tooltip("Lower is faster")]
+    private float fireRate;
+
+    public string GunName => gunName;
+    public Sprite GunSprite => gunSprite;
+
+    public int MaxMagazineSize
+    {
+      get => maxMagazineSize;
+      set => maxMagazineSize = value;
+    }
+
+    public int Ammunition
+    {
+      get => currentAmmunition;
+      set => currentAmmunition = Mathf.Clamp(value, 0, maxMagazineSize);
+    }
+
+    public float BulletSpeed
+    {
+      get => bulletSpeed;
+      set => bulletSpeed = value;
+    }
+
+    public float FireRate
+    {
+      get => fireRate;
+      set => fireRate = value;
+    }
+
+    public void Shot(Transform firePoint)
+    {
+      currentAmmunition -= 1;
+      
+      var fireBullet = objectPooler.SpawnFromPool("Bullet", firePoint.position, firePoint.rotation);
+      fireBullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * BulletSpeed, ForceMode2D.Impulse);
+    }
+
+    public void Shot(Transform[] firePoint)
+    {
+      currentAmmunition -= 1;
+      
+      for (var i = 0; i < firePoint.Length; i++)
+      {
+        var fireBullet =
+          objectPooler.SpawnFromPool("Bullet", firePoint[i].position, firePoint[i].localRotation);
+
+        fireBullet.GetComponent<Rigidbody2D>().AddForce(firePoint[i].up * BulletSpeed, ForceMode2D.Impulse);
+      }
+    }
+  }
   public class GenericGun : MonoBehaviour
   {
-    [InlineEditor(InlineEditorObjectFieldModes.Foldout)]
-    public GunData gunData;
+    #region Field's
+    
+    public GunInfo gunInfo;
 
     [SerializeField] [PropertyOrder(-1)] public Transform[] firePoint;
+    
+    [Header("Camera Shake Controls")]
     [SerializeField] private float cameraShakeIntensity = 0.6f;
     [SerializeField] private float cameraShakeDuration = 0.4f;
-    [SerializeField] private bool disableReload;
+    
+    [Header("Misc")]
+    [SerializeField] private bool disableReload = false;
     [SerializeField] private bool disableCameraShake;
+    
+    [Header("Shot sound")]
     [SerializeField] private AudioSource shotSFX;
+    
     private ICanShot _canShot;
     private Transform _gunTransform;
     private SpriteRenderer _renderer;
     private float defaultFireRate = 1f;
     private (bool hasLigt, Light2D light) _muzzleFlash;
+    private readonly VCamera _vCamera = VCamera.Instance;
 
-    public int CurrentAmmunition { get; private set; }
-    public float currentFireRate = 1f;
+    #endregion
     
+    public int CurrentAmmunition { get; private set; }
+
     private void Awake()
     {
-      _canShot = GetComponentInParent<ICanShot>();
-      _renderer = GetComponent<SpriteRenderer>();
-      _gunTransform = GetComponent<Transform>();
-     
-      _renderer.sprite = gunData.GunSprite;
-      gunData.FireRate = defaultFireRate;
-      gunData.FireRate = currentFireRate;
-      CurrentAmmunition = gunData.Ammunition;
+      (_canShot, _renderer,_gunTransform) = 
+        (GetComponentInParent<ICanShot>(), GetComponent<SpriteRenderer>(), GetComponent<Transform>());
+      
+      _renderer.sprite = gunInfo.GunSprite;
+      gunInfo.FireRate = defaultFireRate;
+      CurrentAmmunition = gunInfo.Ammunition;
     }
 
-    private void Start()
-    {
-      _canShot.onShot += (sender, args) => gunData.Shot(firePoint);
-    }
+    private void Start() =>  
+      _canShot.onShot += (sender, args) => gunInfo.Shot(firePoint);
 
     public void EditFireRate(float fireRate)
     {
-      currentFireRate -= fireRate;
+      gunInfo.FireRate -= fireRate;
     }
 
-    public void ReloadGun()
+    public void ReloadGun() => gunInfo.Ammunition = gunInfo.MaxMagazineSize;
+
+    private void ShakeCamera()
     {
-      CurrentAmmunition = gunData.Ammunition;
+      if (disableCameraShake) return;
+      
+      _vCamera.ShakeCamera(cameraShakeIntensity, cameraShakeDuration);
     }
-
     public void FireBullet()
     {
-      void ShakeCamera()
-      {
-        if (disableCameraShake) return;
-        VCamera.Instance.ShakeCamera(cameraShakeIntensity, cameraShakeDuration);
-      }
-
-      _muzzleFlash = _muzzleFlash.hasLigt ? _muzzleFlash : GetMuzzleFlash(firePoint);
+      if (gunInfo.Ammunition <= 0 && !disableReload) return;
       
-      if (CurrentAmmunition <= 0 && !disableReload) return;
+      _muzzleFlash = _muzzleFlash.hasLigt ? _muzzleFlash : GetMuzzleFlash(firePoint);
 
       ShakeCamera();
 
       if (_muzzleFlash.hasLigt)
       {
-        StartCoroutine("Flash",0.1f);
+        StartCoroutine(nameof(Flash),0.1f);
       }
+      
       CurrentAmmunition -= 1;
       shotSFX.Play();
-      gunData.Shot(firePoint);
+      gunInfo.Shot(firePoint);
     }
+    
     private (bool, Light2D) GetMuzzleFlash(Transform[] firePoint)
     {
       for (int i = 0; i < firePoint.Length; i++)

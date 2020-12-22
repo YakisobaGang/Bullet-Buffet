@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 7996e93b54086c747ac5fd9ee8890c57
+labels:
+- GunSprite
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
