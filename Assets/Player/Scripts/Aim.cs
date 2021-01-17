@@ -15,14 +15,7 @@ namespace Player.Scripts
 
     private void Awake()
     {
-      try
-      {
-        _transform = GetComponents<Transform>();
-      }
-      catch (MissingReferenceException)
-      {
-        return;
-      }
+      _transform = GetComponents<Transform>();
     }
   
     private void Update()

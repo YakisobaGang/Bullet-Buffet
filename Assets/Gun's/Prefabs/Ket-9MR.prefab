@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunInfo:
-    gunName: Ket-9M
+    gunName: Ket-9MR
     gunSprite: {fileID: 21300000, guid: bbba8ffa74d971340af5d28c661217ef, type: 3}
     currentAmmunition: 8
     maxMagazineSize: 8

@@ -19,6 +19,7 @@ namespace Player.Scripts
         [SerializeField] public List<GameObject> inventory = new List<GameObject>(3);
         private readonly Dictionary<string, GameObject> _itemsInstance = new Dictionary<string, GameObject>();
         public Transform hand;
+        public Action<bool> onFlip;
         public float speed = 8;
         public float ControladorDodge = 300f;
         public GameObject _store;
@@ -108,9 +109,16 @@ namespace Player.Scripts
                 }
 
             if (!flip)
+            {
                 player555.localScale = new Vector3(0.51f, 0.51f, 0.51f);
+                onFlip?.Invoke(flip);
+            }
             else
+            {
                 player555.localScale = new Vector3(-0.51f, 0.51f, 0.51f);
+                onFlip?.Invoke(flip);
+            }
+               
 
             switch (_state)
             {
@@ -237,12 +245,6 @@ namespace Player.Scripts
         {
             Normal,
             Dodge
-        }
-
-        public class FlipEvent : EventArgs
-        {
-            public Transform currentFirePoint;
-            public Vector3 newScale;
         }
     }
 }

@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunInfo:
-    gunName: Milk-4M
+    gunName: Milk-A4
     gunSprite: {fileID: 21300000, guid: 7996e93b54086c747ac5fd9ee8890c57, type: 3}
     currentAmmunition: 25
     maxMagazineSize: 25
