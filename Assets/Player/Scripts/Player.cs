@@ -15,7 +15,7 @@ namespace Player.Scripts
         public bool unlockThirdGun = false;
         [SerializeField] private int health = 10;
         [SerializeField] private Animator anim;
-        [SerializeField] private Transform player555;
+        [SerializeField] private Transform player555Transform;
         [SerializeField] private int bombsCount = 3;
         [SerializeField] public List<GameObject> inventory = new List<GameObject>(3);
         private readonly Dictionary<string, GameObject> _itemsInstance = new Dictionary<string, GameObject>();
@@ -121,12 +121,12 @@ namespace Player.Scripts
 
             if (!flip)
             {
-                player555.localScale = new Vector3(0.51f, 0.51f, 0.51f);
+                player555Transform.localScale = new Vector3(0.51f, 0.51f, 0.51f);
                 onFlip?.Invoke(flip);
             }
             else
             {
-                player555.localScale = new Vector3(-0.51f, 0.51f, 0.51f);
+                player555Transform.localScale = new Vector3(-0.51f, 0.51f, 0.51f);
                 onFlip?.Invoke(flip);
             }
                
