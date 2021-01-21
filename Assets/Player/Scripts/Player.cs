@@ -72,7 +72,8 @@ namespace Player.Scripts
                 temp.SetActive(index == 0 ? true : false);
                 index++;
             });
-            
+
+            if (_itemsInstance.ContainsValue(null)) return;
             // get the gameObject and genericGun from _itemsInstance and caching
             _itemsInstance.TryGetValue("primary", out GameObject gunGameObjectPrimary);
             _primaryGun = (gunGameObjectPrimary, gunGameObjectPrimary.GetComponent<GenericGun>());
@@ -81,9 +82,10 @@ namespace Player.Scripts
             _secondaryGun = (gunGameObjectSecondary, gunGameObjectSecondary.GetComponent<GenericGun>());
             
             _itemsInstance.TryGetValue("third", out var gunGameObjectThird);
-            _thirdGun = (gunGameObjectSecondary, gunGameObjectThird.GetComponent<GenericGun>());
+            _thirdGun = (gunGameObjectThird, gunGameObjectThird.GetComponent<GenericGun>());
 
             _gun = _primaryGun.genericGun;
+
         }
 
         private void Update()
@@ -97,16 +99,16 @@ namespace Player.Scripts
                 _store.SetActive(!_store.activeSelf);
                 shopIsEnable?.Invoke(_store.activeSelf);
 
-                //Time.timeScale = Math.Abs(Time.timeScale - 1) < 1 ? 0 : 1 ;
+                Time.timeScale = Math.Abs(Time.timeScale - 1) < 1 ? 0 : 1 ;
 
             }
             if (Health <= 0) OnPlayerDeth?.Invoke(this, EventArgs.Empty);
 
             if (KeyDown(KeyCode.R)) _gun.ReloadGun();
 
-            if (KeyDown(KeyCode.Alpha1)) ChangeWeapon("primary");
-            if (KeyDown(KeyCode.Alpha2)) ChangeWeapon("secondary");
-            if (KeyDown(KeyCode.Alpha3) && unlockThirdGun) ChangeWeapon("third");
+            if (KeyDown(KeyCode.Alpha1)) ChangeWeapon(1);
+            if (KeyDown(KeyCode.Alpha2)) ChangeWeapon(2);
+            if (KeyDown(KeyCode.Alpha3) && unlockThirdGun) ChangeWeapon(3);
             if (KeyDown(KeyCode.G)) PlantC4();
 
             timeLastShot += Time.deltaTime;
@@ -184,29 +186,29 @@ namespace Player.Scripts
             return Input.GetKeyDown(keyCode);
         }
 
-        private void ChangeWeapon(string gunSlotName)
+        private void ChangeWeapon(int gunSlot)
         {
-            switch (gunSlotName)
+            switch (gunSlot)
             {
-                case "primary":
+                case 1:
                     _secondaryGun.gunGameObject.SetActive(false);   // Disable secondary gun
                     _thirdGun.gunGameObject.SetActive(false);      // Disable third gun
                     _primaryGun.gunGameObject.SetActive(true);    //  Enable primary gun
 
                     _gun = _primaryGun.genericGun;
                     break;
-                case "secondary":
+                case 2:
                     _primaryGun.gunGameObject.SetActive(false);     // Disable primary gun
                     _thirdGun.gunGameObject.SetActive(false);      // Disable third gun
                     _secondaryGun.gunGameObject.SetActive(true);  //  Enable secondary gun
                     
                     _gun = _secondaryGun.genericGun;
                     break;
-                case "third":
+                case 3:
                     _primaryGun.gunGameObject.SetActive(false);      // Disable primary gun
                     _secondaryGun.gunGameObject.SetActive(false);   // Disable secondary gun
                     _thirdGun.gunGameObject.SetActive(true);       //  Enable third gun
-                    
+
                     _gun = _thirdGun.genericGun;
                     break;
             }
