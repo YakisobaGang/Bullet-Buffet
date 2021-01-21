@@ -12,7 +12,7 @@ namespace YakisobaGang.Scripts
 
             GetComponentInParent<Player.Scripts.Player>().onFlip += delegate(bool b)
             {
-                print(!b);
+                //print(!b);
                 if (gunData.GunName != "12 Candy") return;
                 
                 if (!b)

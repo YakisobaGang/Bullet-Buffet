@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Enemys;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace GameMaster.WaveSystem
@@ -68,13 +69,19 @@ namespace GameMaster.WaveSystem
     {
       _state = _state is State.Idle ? State.Active : State.Idle;
     }
-
-    [ContextMenu("Get all spawners")]
+    
+    [Button]
     private void GetAllSpawners()
     {
       var temp = FindObjectsOfType<EnemySpawn>();
+      Func<EnemySpawn, bool> spawnerAlreadyOnList = spawner => 
+        enemiesSpawners.Find(spawn => spawn.GetInstanceID() == spawner.GetInstanceID());
 
-      foreach (var enemy in temp) enemiesSpawners.Add(enemy);
+      foreach (var spawner in temp)
+      {
+        if(spawnerAlreadyOnList(spawner)) continue;
+        enemiesSpawners.Add(spawner);
+      }
     }
 
     [ContextMenu("Damage all enemy's")]

@@ -5,11 +5,10 @@ public class VCamera : MonoBehaviour
 {
   public static VCamera Instance;
   private float _shakeTime;
-  private CinemachineVirtualCamera _virtualCamera;
+  [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
   private void Awake()
   {
-    _virtualCamera = GetComponent<CinemachineVirtualCamera>();
     Instance = this;
   }
 
@@ -20,17 +19,19 @@ public class VCamera : MonoBehaviour
       _shakeTime -= Time.deltaTime;
       if (_shakeTime <= 0f)
       {
-        var perlinNoise = _virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        var perlinNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         perlinNoise.m_AmplitudeGain = 0f;
+        perlinNoise.m_FrequencyGain = 0f;
       }
     }
   }
 
   public void ShakeCamera(float intensity, float time)
   {
-    var perlinNoise = _virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+    var perlinNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
     _shakeTime = time;
+    perlinNoise.m_FrequencyGain = _shakeTime;
     perlinNoise.m_AmplitudeGain = intensity;
   }
 }

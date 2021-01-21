@@ -11,7 +11,7 @@ public class PriceShop : MonoBehaviour
     void Awake()
     {
         texto = GetComponent<TextMeshProUGUI>();
-        _referenza = Referenza.GetComponent<ShopSystem>()._actualValue;
+        _referenza = Referenza.GetComponent<ShopSystem>().upgradePrice;
     }
 
     void LateUpdate()

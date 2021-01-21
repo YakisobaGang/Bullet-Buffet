@@ -5,32 +5,28 @@ namespace YakisobaGang.GameMaster
 {
     public class CrosshairScript : MonoBehaviour
     {
-        private Camera mainCamera;
+        private Player.Scripts.Player player;
 
         private void Awake()
         {
-            mainCamera = Camera.main;
+            player = GameObject.FindWithTag("Player").GetComponent<Player.Scripts.Player>();
         }
 
         void Start()
         {
             Cursor.visible = false;
+            player.shopIsEnable = b =>
+            {
+                Cursor.visible = b;
+                gameObject.SetActive(!b);
+            };
         }
 
         private void Update()
         {
-            if (Time.timeScale < 1)
-            {
-                gameObject.SetActive(false);
-                Cursor.visible = true;
-            }
-            else
-            {
-                gameObject.SetActive(true);
-                Cursor.visible = false;
-                Vector3 cursorPos = UtilsClass.GetMouseWorldPosition();
-                transform.position = cursorPos;
-            }
+            Vector3 cursorPos = UtilsClass.GetMouseWorldPosition();
+            transform.position = cursorPos;
+            
         }
     }
 }

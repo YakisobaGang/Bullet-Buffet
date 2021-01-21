@@ -12,6 +12,7 @@ namespace Player.Scripts
     {
         private static readonly int IsWalking = Animator.StringToHash("IsWalking");
         
+        public bool unlockThirdGun = false;
         [SerializeField] private int health = 10;
         [SerializeField] private Animator anim;
         [SerializeField] private Transform player555;
@@ -32,15 +33,17 @@ namespace Player.Scripts
         private float _slideSpeed;
         private State _state;
         private Transform _transform;
+        public Action<bool> shopIsEnable;
 
         private bool flip;
         private float timeLastShot;
-
-        private (GameObject gunGameObject, GenericGun genericGun) _primaryGun;
-        private (GameObject gunGameObject, GenericGun genericGun) _secondaryGun;
+        
+        public (GameObject gunGameObject, GenericGun genericGun) _primaryGun;
+        public (GameObject gunGameObject, GenericGun genericGun) _secondaryGun;
+        public (GameObject gunGameObject, GenericGun genericGun) _thirdGun;
         private ObjectPooler _objectPooler;
 
-        public int CurrentBombsCount { get; private set; }
+        public int currentBombsCount = 3;
 
         public int Health => health;
 
@@ -55,7 +58,7 @@ namespace Player.Scripts
             _aim = GetComponent<Aim>();
             
             
-            CurrentBombsCount = bombsCount;
+            currentBombsCount = bombsCount;
             GetComponent<Aim>().FlipPlayer += b => flip = b;
             
             // spawning the primary and secondary guns
@@ -65,7 +68,7 @@ namespace Player.Scripts
                 if(item.TryGetComponent(out Mine _)) return;
                 
                 var temp = Instantiate(item, hand);
-                _itemsInstance.Add(index == 0 ? "primary": "secondary", temp);
+                _itemsInstance.Add(index == 0 ? "primary" : index == 1 ? "secondary" : "third", temp);
                 temp.SetActive(index == 0 ? true : false);
                 index++;
             });
@@ -76,6 +79,9 @@ namespace Player.Scripts
             
             _itemsInstance.TryGetValue("secondary", out var gunGameObjectSecondary);
             _secondaryGun = (gunGameObjectSecondary, gunGameObjectSecondary.GetComponent<GenericGun>());
+            
+            _itemsInstance.TryGetValue("third", out var gunGameObjectThird);
+            _thirdGun = (gunGameObjectSecondary, gunGameObjectThird.GetComponent<GenericGun>());
 
             _gun = _primaryGun.genericGun;
         }
@@ -86,18 +92,21 @@ namespace Player.Scripts
             var moveX = Input.GetAxisRaw("Horizontal");
             var mousePos = Input.mousePosition;
 
-            // if (KeyDown(KeyCode.B))
-            // {
-            //     _store.SetActive(true);
-            //     Time.timeScale = 0;
-            //
-            // }
+            if (KeyDown(KeyCode.B))
+            {
+                _store.SetActive(!_store.activeSelf);
+                shopIsEnable?.Invoke(_store.activeSelf);
+
+                //Time.timeScale = Math.Abs(Time.timeScale - 1) < 1 ? 0 : 1 ;
+
+            }
             if (Health <= 0) OnPlayerDeth?.Invoke(this, EventArgs.Empty);
 
             if (KeyDown(KeyCode.R)) _gun.ReloadGun();
 
             if (KeyDown(KeyCode.Alpha1)) ChangeWeapon("primary");
             if (KeyDown(KeyCode.Alpha2)) ChangeWeapon("secondary");
+            if (KeyDown(KeyCode.Alpha3) && unlockThirdGun) ChangeWeapon("third");
             if (KeyDown(KeyCode.G)) PlantC4();
 
             timeLastShot += Time.deltaTime;
@@ -134,13 +143,14 @@ namespace Player.Scripts
 
         private void PlantC4()
         {
-            if (CurrentBombsCount <= 0) return;
+            if (currentBombsCount <= 0) return;
 
             Instantiate(inventory[2], _transform.position, Quaternion.identity);
-            CurrentBombsCount--;
+            currentBombsCount--;
         }
 
         public event EventHandler onShot;
+        public event EventHandler OnPlayerDeth;
 
         public void TakeDamage()
         {
@@ -163,9 +173,7 @@ namespace Player.Scripts
 
             health -= damage;
         }
-
-        public event EventHandler OnPlayerDeth;
-
+        
         private bool FireKeyPress()
         {
             return Input.GetMouseButton(0);
@@ -181,16 +189,25 @@ namespace Player.Scripts
             switch (gunSlotName)
             {
                 case "primary":
-                    _secondaryGun.gunGameObject.SetActive(false);    // Disable secondary gun
-                    _primaryGun.gunGameObject.SetActive(true);      //  Enable primary gun
+                    _secondaryGun.gunGameObject.SetActive(false);   // Disable secondary gun
+                    _thirdGun.gunGameObject.SetActive(false);      // Disable third gun
+                    _primaryGun.gunGameObject.SetActive(true);    //  Enable primary gun
 
                     _gun = _primaryGun.genericGun;
                     break;
                 case "secondary":
-                    _primaryGun.gunGameObject.SetActive(false);      // Disable primary gun
-                    _secondaryGun.gunGameObject.SetActive(true);    //  Enable secondary gun
+                    _primaryGun.gunGameObject.SetActive(false);     // Disable primary gun
+                    _thirdGun.gunGameObject.SetActive(false);      // Disable third gun
+                    _secondaryGun.gunGameObject.SetActive(true);  //  Enable secondary gun
                     
                     _gun = _secondaryGun.genericGun;
+                    break;
+                case "third":
+                    _primaryGun.gunGameObject.SetActive(false);      // Disable primary gun
+                    _secondaryGun.gunGameObject.SetActive(false);   // Disable secondary gun
+                    _thirdGun.gunGameObject.SetActive(true);       //  Enable third gun
+                    
+                    _gun = _thirdGun.genericGun;
                     break;
             }
             
