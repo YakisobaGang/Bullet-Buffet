@@ -15,7 +15,7 @@ namespace YakisobaGang.GameMaster
         void Start()
         {
             Cursor.visible = false;
-            player.shopIsEnable = b =>
+            player.ShopIsEnable = b =>
             {
                 Cursor.visible = b;
                 gameObject.SetActive(!b);

@@ -10,7 +10,7 @@ namespace YakisobaGang.Scripts
             var gunData = GetComponent<GenericGun>().gunInfo;
             var firePoint = GetComponent<GenericGun>().firePoint;
 
-            GetComponentInParent<Player.Scripts.Player>().onFlip += delegate(bool b)
+            GetComponentInParent<Player.Scripts.Player>().ONFlip += delegate(bool b)
             {
                 //print(!b);
                 if (gunData.GunName != "12 Candy") return;

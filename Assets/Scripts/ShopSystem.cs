@@ -27,10 +27,10 @@ public class ShopSystem : MonoBehaviour
         switch (weaponName)
         {
             case "Milk-A4":
-                _player._secondaryGun.genericGun.gunInfo.FireRate -= upgrade;
+                _player.SecondaryGun.genericGun.gunInfo.FireRate -= upgrade;
                 break;
             case "12 Candy":
-                _player._primaryGun.genericGun.gunInfo.FireRate -= upgrade;
+                _player.PrimaryGun.genericGun.gunInfo.FireRate -= upgrade;
                 
                 break;
             case"Ket-9MR":
@@ -40,7 +40,7 @@ public class ShopSystem : MonoBehaviour
                     _firstTime = false;
                     break;
                 }
-                _player._primaryGun.genericGun.gunInfo.FireRate -= upgrade;
+                _player.PrimaryGun.genericGun.gunInfo.FireRate -= upgrade;
                 break;
             case"Torta":
                 _player.currentBombsCount = 3;
