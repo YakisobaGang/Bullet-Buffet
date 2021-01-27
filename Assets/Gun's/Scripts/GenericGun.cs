@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using GameMaster;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -9,9 +10,11 @@ namespace YakisobaGang.Scripts
   [System.Serializable]
   public class GunInfo
   {
-    ObjectPooler objectPooler = ObjectPooler.Instance;
-    
+    private ObjectPooler _objectPooler = ObjectPooler.Instance;
+
+    [SerializeField] private bool playerUse = true;
     [SerializeField] private string gunName;
+    [SerializeField,Tooltip("Damage per bullet fired")] private int damage = 1;
 
     [SerializeField] [PreviewField(ObjectFieldAlignment.Left, Height = 130)]
     private Sprite gunSprite;
@@ -31,6 +34,11 @@ namespace YakisobaGang.Scripts
     public string GunName => gunName;
     public Sprite GunSprite => gunSprite;
 
+    public int Damage
+    {
+      get => damage;
+      set => damage = value;
+    }
     public int MaxMagazineSize
     {
       get => maxMagazineSize;
@@ -59,7 +67,8 @@ namespace YakisobaGang.Scripts
     {
       currentAmmunition -= 1;
       
-      var fireBullet = objectPooler.SpawnFromPool("Bullet", firePoint.position, firePoint.rotation);
+      var fireBullet = _objectPooler.SpawnFromPool(playerUse ? "PlayerBullet": "EnemyBullet", firePoint.position, firePoint.rotation);
+      fireBullet.GetComponent<Bullet>().damage = damage;
       fireBullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * BulletSpeed, ForceMode2D.Impulse);
     }
 
@@ -70,7 +79,7 @@ namespace YakisobaGang.Scripts
       for (var i = 0; i < firePoint.Length; i++)
       {
         var fireBullet =
-          objectPooler.SpawnFromPool("Bullet", firePoint[i].position, firePoint[i].localRotation);
+          _objectPooler.SpawnFromPool(playerUse ? "PlayerBullet": "EnemyBullet", firePoint[i].position, firePoint[i].localRotation);
 
         fireBullet.GetComponent<Rigidbody2D>().AddForce(firePoint[i].up * BulletSpeed, ForceMode2D.Impulse);
       }
@@ -123,9 +132,7 @@ namespace YakisobaGang.Scripts
     {
       gunInfo.FireRate -= fireRate;
     }
-
     public void ReloadGun() => gunInfo.Ammunition = gunInfo.MaxMagazineSize;
-
     private void ShakeCamera()
     {
       if (disableCameraShake) return;
@@ -149,7 +156,6 @@ namespace YakisobaGang.Scripts
       shotSFX.Play();
       gunInfo.Shot(firePoint);
     }
-    
     private (bool, Light2D) GetMuzzleFlash(Transform[] firePoint)
     {
       for (int i = 0; i < firePoint.Length; i++)
