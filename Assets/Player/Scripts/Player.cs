@@ -13,6 +13,7 @@ namespace Player.Scripts
     {
         // hashing walk animation 
         private static readonly int IsWalking = Animator.StringToHash("IsWalking");
+        private static readonly int DamageTick  = Animator.StringToHash("damageTick");
 
         [Space,Tooltip("Unlock the pistol (Ket-9MR)")] public bool unlockThirdGun = false;
 
@@ -169,20 +170,24 @@ namespace Player.Scripts
             Instantiate(inventory[2], _transform.position, Quaternion.identity);
             currentBombsCount--;
         }
-
+        
+        [ContextMenu("Do damage")]
         public void TakeDamage()
         {
+            anim.Play(DamageTick);
+            
             if (health <= 0)
             {
                 Time.timeScale = 0;
                 return;
             }
-
             health -= 1;
         }
 
         public void TakeDamage(int damage)
         {
+            anim.Play(DamageTick);
+            
             if (health <= 0)
             {
                 Time.timeScale = 0;
