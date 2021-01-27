@@ -51,7 +51,7 @@ namespace Enemys
             }
             health -= damage;
             damageTickSFX.Play();
-            StartCoroutine("ChangeColorCoroutine", 0.1f);
+            StartCoroutine(nameof(ChangeColorCoroutine), 0.1f);
         }
 
          IEnumerator ChangeColorCoroutine(float timeInSeconds)
