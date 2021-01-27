@@ -32,7 +32,6 @@ namespace Canvas
         
         IEnumerator CLoadScene(int index)
         {
-            print("start");
             transition.SetTrigger(_startTransition);
 
             // yield return new WaitForSeconds(transitionTime);
