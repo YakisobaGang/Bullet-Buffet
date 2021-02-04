@@ -104,6 +104,7 @@ namespace Player.Scripts
             _itemsInstance.TryGetValue("third", out var gunGameObjectThird);
             ThirdGun = (gunGameObjectThird, gunGameObjectThird.GetComponent<GenericGun>());
 
+
             _gun = PrimaryGun.genericGun;
 
         }
