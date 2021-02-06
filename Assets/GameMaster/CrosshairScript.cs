@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using CodeMonkey.Utils;
+﻿using CodeMonkey.Utils;
+using UnityEngine;
 
-namespace YakisobaGang.GameMaster
+namespace GameMaster
 {
     public class CrosshairScript : MonoBehaviour
     {

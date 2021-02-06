@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Threading;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 
-namespace Canvas
+namespace Canvas.Scripts
 {
     public class SceneLoader : MonoBehaviour
     {

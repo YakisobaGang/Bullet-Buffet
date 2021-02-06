@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using GameMaster;
+using TMPro;
 using UnityEngine;
 
 namespace Canvas.Scripts

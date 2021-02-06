@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Canvas.Scripts
+namespace Canvas.Health_Bar
 {
 
     public class LifeManager : MonoBehaviour

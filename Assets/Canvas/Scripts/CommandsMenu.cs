@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Canvas
+namespace Canvas.Scripts
 {
     public class CommandsMenu : MonoBehaviour
     {

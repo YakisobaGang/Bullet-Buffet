@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using Explosive.Script;
 using GameMaster;
 using Sirenix.OdinInspector;
@@ -47,6 +48,8 @@ namespace Player.Scripts
         #region Dont see on Inspector or privete fields
 
         [HideInInspector] public int currentBombsCount = 3;
+        [HideInInspector] public static (string currentAmmo, string maxAmmo) AmmoCountText;
+        private StringBuilder sb = new StringBuilder();
         private readonly Dictionary<string, GameObject> _itemsInstance = new Dictionary<string, GameObject>();
         private float _slideSpeed;
         private float _timeLastShot;
@@ -134,12 +137,15 @@ namespace Player.Scripts
 
             _timeLastShot += Time.deltaTime;
             if (FireKeyPress() && Time.timeScale != 0)
+            {
                 if (_timeLastShot >= _gun.gunInfo.FireRate)
                 {
                     _gun.FireBullet();
                     _timeLastShot = 0;
                 }
-
+            }
+            AmmoCountText = (_gun.gunInfo.Ammunition.ToString(), _gun.gunInfo.MaxMagazineSize.ToString());
+            
             if (!_flip)
             {
                 playerRootTransform.localScale = new Vector3(0.51f, 0.51f, 0.51f);

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace YakisobaGang.GameMaster
+namespace GameMaster
 {
   public class HandleDeath : MonoBehaviour
   {

@@ -1,7 +1,7 @@
-﻿using Sirenix.OdinInspector;
+﻿using GameMaster;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
-using YakisobaGang.GameMaster;
 
 namespace Canvas.Scripts
 {

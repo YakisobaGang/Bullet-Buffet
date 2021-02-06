@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ScoreAndCashSystem : MonoBehaviour
+namespace GameMaster
 {
-    public static int Score;
-    public static int HighScore;
-    public static int Cash;
-    public static bool Milka4;
-
-    void awake()
+    public class ScoreAndCashSystem : MonoBehaviour
     {
-        Milka4 = false;
+        public static int Score;
+        public static int HighScore;
+        public static int Cash;
+        public static bool Milka4;
+
+        void awake()
+        {
+            Milka4 = false;
+        }
     }
 }

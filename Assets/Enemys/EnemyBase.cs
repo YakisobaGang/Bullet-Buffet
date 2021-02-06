@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using GameMaster;
 using UnityEngine;
 
 namespace Enemys
