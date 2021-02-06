@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 using YakisobaGang.Scripts;
 
 public class ShopSystem : MonoBehaviour
 {
     private Player.Scripts.Player _player;
-    public float upgrade;
+    [Tooltip("First upgrade, but for the Ket-9MR this doesn't work")]
+    [FormerlySerializedAs("firstUpgrade")] public float fireReteUpgrade;
+    [FormerlySerializedAs("secondUpgrade"), Tooltip("Second upgrade")] public float damageUpgrade;
+    private float _maxDamageUpgrade = 20f;
     public int upgradePrice;
     public string weaponName;
     private int _playerCash = 9999;
     private bool _firstTime = true;
+    private bool _secondTime = false;
 
     private void Awake()
     {
@@ -27,20 +32,37 @@ public class ShopSystem : MonoBehaviour
         switch (weaponName)
         {
             case "Milk-A4":
-                _player.SecondaryGun.genericGun.gunInfo.FireRate -= upgrade;
+                if (_firstTime)
+                {
+                    _player.SecondaryGun.genericGun.gunInfo.FireRate -= fireReteUpgrade;
+                    (_firstTime, _secondTime) = (false, true);
+                }
+                else if (_secondTime)
+                {
+                    _player.SecondaryGun.genericGun.gunInfo.Damage = (int) Mathf.Min(damageUpgrade, _maxDamageUpgrade);
+                }
                 break;
             case "12 Candy":
-                _player.PrimaryGun.genericGun.gunInfo.FireRate -= upgrade;
-                
+                if (_firstTime)
+                {
+                    _player.PrimaryGun.genericGun.gunInfo.FireRate -= fireReteUpgrade;
+                    (_firstTime, _secondTime) = (false, true);
+                }
+                else if (_secondTime)
+                {
+                    _player.PrimaryGun.genericGun.gunInfo.Damage = (int) Mathf.Min(damageUpgrade, _maxDamageUpgrade);
+                }
                 break;
             case"Ket-9MR":
                 if (_firstTime)
                 {
                     _player.unlockThirdGun = true;
-                    _firstTime = false;
-                    break;
+                    (_firstTime, _secondTime) = (false, true);
                 }
-                _player.PrimaryGun.genericGun.gunInfo.FireRate -= upgrade;
+                else if (_secondTime)
+                {
+                    _player.ThirdGun.genericGun.gunInfo.Damage = (int) Mathf.Min(damageUpgrade, _maxDamageUpgrade);
+                }
                 break;
             case"Torta":
                 _player.currentBombsCount = 3;
