@@ -19,7 +19,7 @@ public class PlayAnimationAfter : MonoBehaviour
     {
         if (_particleSystem.time >= 1)
         {
-            _light2D.intensity = 2 ;
+            _light2D.intensity = 2;
         }
 
         if (!_particleSystem.isEmitting)

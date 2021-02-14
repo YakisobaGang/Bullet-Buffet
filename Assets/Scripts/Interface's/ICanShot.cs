@@ -2,5 +2,5 @@
 
 public interface ICanShot
 {
-  event EventHandler onShot;
+    event EventHandler onShot;
 }

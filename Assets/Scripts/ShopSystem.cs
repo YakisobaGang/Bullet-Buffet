@@ -28,7 +28,7 @@ public class ShopSystem : MonoBehaviour
     public void Buy()
     {
         if ((_playerCash < upgradePrice)) return;
-        
+
         switch (weaponName)
         {
             case "Milk-A4":
@@ -39,7 +39,7 @@ public class ShopSystem : MonoBehaviour
                 }
                 else if (_secondTime)
                 {
-                    _player.SecondaryGun.genericGun.gunInfo.Damage = (int) Mathf.Min(damageUpgrade, _maxDamageUpgrade);
+                    _player.SecondaryGun.genericGun.gunInfo.Damage = (int)Mathf.Min(damageUpgrade, _maxDamageUpgrade);
                 }
                 break;
             case "12 Candy":
@@ -50,10 +50,10 @@ public class ShopSystem : MonoBehaviour
                 }
                 else if (_secondTime)
                 {
-                    _player.PrimaryGun.genericGun.gunInfo.Damage = (int) Mathf.Min(damageUpgrade, _maxDamageUpgrade);
+                    _player.PrimaryGun.genericGun.gunInfo.Damage = (int)Mathf.Min(damageUpgrade, _maxDamageUpgrade);
                 }
                 break;
-            case"Ket-9MR":
+            case "Ket-9MR":
                 if (_firstTime)
                 {
                     _player.unlockThirdGun = true;
@@ -61,10 +61,10 @@ public class ShopSystem : MonoBehaviour
                 }
                 else if (_secondTime)
                 {
-                    _player.ThirdGun.genericGun.gunInfo.Damage = (int) Mathf.Min(damageUpgrade, _maxDamageUpgrade);
+                    _player.ThirdGun.genericGun.gunInfo.Damage = (int)Mathf.Min(damageUpgrade, _maxDamageUpgrade);
                 }
                 break;
-            case"Torta":
+            case "Torta":
                 _player.currentBombsCount = 3;
                 break;
         }

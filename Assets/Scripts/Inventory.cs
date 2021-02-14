@@ -6,28 +6,28 @@ using YakisobaGang.Scripts.Data;
 
 public class Inventory
 {
-  private readonly List<GameObject> _itemsList;
-  private int _capacity;
+    private readonly List<GameObject> _itemsList;
+    private int _capacity;
 
-  public List<GameObject> ItemsList => _itemsList;
-  public bool IsFull { get; private set; }
-  public int Capacity { get; private set; }
-  
+    public List<GameObject> ItemsList => _itemsList;
+    public bool IsFull { get; private set; }
+    public int Capacity { get; private set; }
 
-  public Inventory(int capacity)
-  {
-    _itemsList = new List<GameObject>(capacity);
-    Capacity = capacity;
-  }
 
-  public void AddItem(GameObject item)
-  {
-    if (_itemsList.Count == Capacity)
+    public Inventory(int capacity)
     {
-      IsFull = true;
-      return;
+        _itemsList = new List<GameObject>(capacity);
+        Capacity = capacity;
     }
-    
-    _itemsList.Add(item);
-  }
+
+    public void AddItem(GameObject item)
+    {
+        if (_itemsList.Count == Capacity)
+        {
+            IsFull = true;
+            return;
+        }
+
+        _itemsList.Add(item);
+    }
 }
