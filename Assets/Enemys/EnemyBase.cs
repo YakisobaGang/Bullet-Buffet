@@ -22,34 +22,23 @@ namespace Enemys
             Rb = GetComponent<Rigidbody2D>();
         }
 
+        private void Update()
+        {
+            if (health <= 0)
+            {
+                damageTickSFX.Play();
+                Destroy(gameObject);
+            }
+        }
+
         private void OnDestroy()
         {
             OnEnemyDeath?.Invoke(this, EventArgs.Empty);
         }
-
-        public void TakeDamage()
-        {
-            if (health <= 0)
-            {
-                damageTickSFX.Play();
-                ScoreAndCashSystem.Score += 100;
-                ScoreAndCashSystem.Cash += 50;
-                Destroy(gameObject);
-            }
-            health -= 1;
-            StartCoroutine("ChangeColorCoroutine", 0.1f);
-            damageTickSFX.Play();
-        } 
         
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage = 1)
         {
-            if (health <= 0)
-            {
-                damageTickSFX.Play();
-                ScoreAndCashSystem.Score += 100;
-                ScoreAndCashSystem.Cash += 50;
-                Destroy(gameObject);
-            }
+            print(gameObject.name);
             health -= damage;
             damageTickSFX.Play();
             StartCoroutine(nameof(ChangeColorCoroutine), 0.1f);

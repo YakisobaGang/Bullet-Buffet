@@ -136,9 +136,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7412908195081607493}
+  - component: {fileID: 7432476534341159419}
   - component: {fileID: 1403847984253358753}
   - component: {fileID: -5242264750359903431}
-  - component: {fileID: 7432476534341159419}
   - component: {fileID: 8979217181310914849}
   - component: {fileID: 125060505769932689}
   m_Layer: 0
@@ -163,6 +163,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.23500001}
+--- !u!114 &7432476534341159419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8165403544582993158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d82eb0d2c9144cbf087d59a2ab67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  timeForDespawn: 3
 --- !u!212 &1403847984253358753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -234,19 +248,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7432476534341159419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8165403544582993158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d82eb0d2c9144cbf087d59a2ab67e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioTiro: {fileID: 0}
 --- !u!58 &8979217181310914849
 CircleCollider2D:
   m_ObjectHideFlags: 0

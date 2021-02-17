@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Canvas.Scripts;
+using UnityEngine;
 using UnityEngine.Serialization;
 using YakisobaGang.Scripts;
 
@@ -11,7 +13,7 @@ public class ShopSystem : MonoBehaviour
     private float _maxDamageUpgrade = 20f;
     public int upgradePrice;
     public string weaponName;
-    private int _playerCash = 9999;
+    private int _playerCash = 0;
     private bool _firstTime = true;
     private bool _secondTime = false;
 
@@ -20,15 +22,16 @@ public class ShopSystem : MonoBehaviour
         _player = GameObject.FindWithTag("Player").GetComponent<Player.Scripts.Player>();
     }
 
-    // private void LateUpdate()
-    // {
-    //     ScoreAndCashSystem.Cash = _playerCash;
-    // }
+    private void Start()
+    {
+        CashHandler.PlayerCash += i => _playerCash = i;
+    }
 
     public void Buy()
     {
         if ((_playerCash < upgradePrice)) return;
-
+        _player.Cash -= upgradePrice;
+        
         switch (weaponName)
         {
             case "Milk-A4":

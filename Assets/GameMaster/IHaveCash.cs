@@ -2,10 +2,8 @@
 
 namespace GameMaster
 {
-    public interface IHaveScoreAndCash
+    public interface IHaveCash
     {
-        public int Score { get; }
-        public int HighScore { get; }
-        public int Cash { get; }
+         int Cash { get; }
     }
 }

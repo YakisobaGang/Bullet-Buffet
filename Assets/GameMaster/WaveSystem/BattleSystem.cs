@@ -28,11 +28,7 @@ namespace GameMaster.WaveSystem
     private void Start()
     {
       ChangeState();
-      _enemyManager.AllEnemysAreDead += delegate(bool b)
-      {
-        if(!b) return;
-        StartCoroutine("ChangeStateAfterSeconds", timeBetweenWaves);
-      };
+      _enemyManager.AllEnemysAreDead += () => StartCoroutine(nameof(ChangeStateAfterSeconds), timeBetweenWaves);
       enemiesSpawners.ForEach(spawn =>
       {
         spawn.SpawenerHasNoChild += () => _emptySpawnersCount++;
@@ -46,7 +42,6 @@ namespace GameMaster.WaveSystem
         foreach (var enemy in enemiesSpawners)
         {
           enemy.Spawn();
-          _enemyManager.AddEnemy(enemy.GetInstanceID());
           currentEnemiesOnScene.Add(enemy.GetInstanceID());
         }
         ChangeState();
@@ -84,7 +79,7 @@ namespace GameMaster.WaveSystem
       }
     }
 
-    [ContextMenu("Damage all enemy's")]
+    [Button]
     private void KillAllEnemys()
     {
       for (var i = 0; i < enemiesSpawners.Count; i++)

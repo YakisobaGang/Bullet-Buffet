@@ -13,6 +13,7 @@ namespace GameMaster.WaveSystem
     public Action SpawenerHasNoChild;
     private GameObject _enemyInstance;
     private Transform _transform;
+    public static event Action<GameObject> EnemySpaned;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ namespace GameMaster.WaveSystem
     public void Spawn()
     {
       _enemyInstance = Instantiate(GetRandomEnemy(), transform);
+      EnemySpaned?.Invoke(_enemyInstance);
     }
     
     private GameObject GetRandomEnemy()

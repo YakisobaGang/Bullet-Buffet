@@ -5,12 +5,13 @@ using Explosive.Script;
 using GameMaster;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Rendering;
 using YakisobaGang.Scripts;
 
 namespace Player.Scripts
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Player : MonoBehaviour, IDamageable, ICanShot
+    public class Player : MonoBehaviour, IDamageable, ICanShot, IHaveCash
     {
         // hashing walk animation 
         private static readonly int IsWalking = Animator.StringToHash("IsWalking");
@@ -60,7 +61,14 @@ namespace Player.Scripts
         private Camera _mainCamera;
         private Rigidbody2D _physics;
         private Transform _transform;
+        private int cash = 0;
         
+        public int Cash
+        {
+            get => cash;
+            set => cash = Mathf.Clamp(value, 0, 9999999);
+        }
+
         #endregion
 
         #region Guns Info
@@ -82,6 +90,10 @@ namespace Player.Scripts
             _slideSpeed = controladorDodge;
 
             currentBombsCount = bombsCount;
+            Bullet.OnHitEnemy += i =>
+            {
+                Cash += i;
+            };
             GetComponent<Aim>().FlipPlayer += b => _flip = b;
             
             // spawning the primary and secondary guns
@@ -293,5 +305,6 @@ namespace Player.Scripts
             Normal,
             Dodge
         }
+
     }
 }

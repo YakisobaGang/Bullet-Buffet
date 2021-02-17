@@ -1,4 +1,5 @@
-﻿using GameMaster;
+﻿using System;
+using GameMaster;
 using TMPro;
 using UnityEngine;
 
@@ -7,16 +8,17 @@ namespace Canvas.Scripts
     public class CashHandler : MonoBehaviour
     {
         private TextMeshProUGUI texto;
-
+        [SerializeField] private GameObject playerPrefab = null;
+        public static event Action<int> PlayerCash;
         void Awake()
         {
             texto = GetComponent<TextMeshProUGUI>();
-            ScoreAndCashSystem.Cash = 0;
         }
 
-        void FixedUpdate()
+        private void LateUpdate()
         {
-            texto.SetText("Cash: " + ScoreAndCashSystem.Cash);
+            texto.SetText("Cash: " + playerPrefab.GetComponent<IHaveCash>().Cash);
+            PlayerCash?.Invoke(playerPrefab.GetComponent<IHaveCash>().Cash);
         }
     }
 }

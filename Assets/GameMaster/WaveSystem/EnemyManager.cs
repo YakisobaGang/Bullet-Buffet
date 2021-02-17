@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ludiq.PeekCore;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -7,23 +8,24 @@ namespace GameMaster.WaveSystem
 {
   public class EnemyManager : MonoBehaviour
   {
-    public Action<bool> AllEnemysAreDead;
-    [SerializeField,LabelWidth(150)] private int maxEnemysOnScene = 10;
-    private List<int> ListOfEnemys = new List<int>();
+    public event Action AllEnemysAreDead;
+    [SerializeField,LabelWidth(150)] private int maxEnemysOnScene = 15;
+    [SerializeField] private List<GameObject> ListOfEnemys = new List<GameObject>();
     
-    public void RemoveEnemy(int id) => ListOfEnemys.Remove(id);
-    public bool AbleToSpawn() => ListOfEnemys.Count < maxEnemysOnScene;
-    public void AddEnemy(int id)
+    public bool AbleToSpawn() => ListOfEnemys.Count < maxEnemysOnScene && ListOfEnemys.Count == 0;
+
+    private void Start()
     {
-      if(ListOfEnemys.Count != maxEnemysOnScene)
-      {
-        ListOfEnemys.Add(id);
-      }
+      EnemySpawn.EnemySpaned += enemy => ListOfEnemys.Add(enemy);
     }
 
     private void Update()
     {
-      AllEnemysAreDead?.Invoke(ListOfEnemys.Count == 0);
+      if (ListOfEnemys.TrueForAll(enemy => enemy.IsDestroyed()))
+      {
+        ListOfEnemys.Clear();
+        AllEnemysAreDead?.Invoke();
+      }
     }
   }
 }
